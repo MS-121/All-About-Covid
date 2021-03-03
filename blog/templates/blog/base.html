@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/about.css' %}">
+    {% if title %}
+        <title>AAC - {{ title }}</title>
+    {% else %}
+        <title>AAC</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+
+          <img src="{% static 'blog/icon.png' %}" width="40" height="40" class="d-inline-block align-top" style="margin-right: 20px" alt="">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle" style="height: 50px">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link word" href="{% url 'blog-home' %}">Home</a>
+              <a class="nav-item nav-link word" href="{% url 'news' %}">News</a>
+              <a class="nav-item nav-link word" href="{% url 'blog-about' %}">Contact</a>
+              <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Covid-Data
+              </a>
+              <div class="dropdown-menu">
+              <a class="dropdown-item word_a" href="{% url 'statedata' %}">States</a>
+              <a class="dropdown-item word_a" href="{% url 'country' %}">Countries</a>
+              <a class="dropdown-item word_a" href="{% url 'globe' %}">Global</a>
+              </div>
+              </div>
+              
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link word" href="{% url 'post-create' %}">New Post</a>
+                <a class="nav-item nav-link word" href="{% url 'profile' %}">Profile</a>
+                <a class="nav-item nav-link word" href="{% url 'logout' %}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link word" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link word" href="{% url 'register' %}">Register</a>
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main" class="container">
+      <div class="row">
+
+        <div class="col-md-8">
+
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% block content %}
+
+          {% endblock %}
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+            <h3>Important Information</h3>
+            <p class='text-muted'> Follow Guidelines
+              <ul class="list-group">
+                <img src="{% static 'blog/covid-6.png' %}" width="310" alt="My image">
+                <br>
+                <br>
+                <iframe width="310" height="315" src="https://www.youtube.com/embed/iP6utI4Dw1U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </ul>
+            </p>
+          </div>
+        </div>
+        <!-- <marquee>Be safe Be secure</marquee> -->
+      </div>
+    </main>
+    
+     
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+</html>

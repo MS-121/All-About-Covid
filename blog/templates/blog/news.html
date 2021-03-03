@@ -1,0 +1,41 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<img src="{% static 'blog/news-2.jpg' %}" width="730px" style="margin-bottom: 20px" alt="My image">
+<!-- <h2 style="text-align: center;">Under Construction</h2> -->
+
+<div class="news py-4 no-gutter bg-light">
+    <div class="container">
+            <div class="heading">
+                
+                <h2>Latest News | India</h2>
+
+            </div>
+        {% for news in context %}
+        <section class="curr_news" style="margin-bottom: 180px">
+            <div class="container py-3">
+                <div class="card border-0">
+                    <div class="row rounded">
+                        <div class="col-md-3 text-center mx-auto my-auto">
+                            <img src="{{news.pic}}" class="w-100 rounded">
+                        </div>
+                        <div class="col-md-9 px-3 py-2">
+                            <div class="card-block px-3">
+                                <h5 class="card-title">{{news.heading|title}}</h5>
+                                <p class="card-text">{{news.content}}</p>
+                               
+                                <a href="{{news.link}}" class="btn btn-info">Read More</a>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}

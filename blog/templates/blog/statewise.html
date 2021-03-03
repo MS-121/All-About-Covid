@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+  <img src="{% static 'blog/stat-3.jpg' %}" width="730px" style="margin-bottom: 20px" alt="My image">
+    <div class="state py-4 no-gutter ">
+        <div class="container">
+            <div class="heading">
+                <h2>STATEWISE WISE REPORT</h2>
+                <br>
+            </div>
+            <table class="table table-hover table-responsive-lg">
+                <thead>
+                <tr style="background-color: #add8e6">
+                  <th scope="col" >STATE</th>
+                  <th scope="col">CONFIRMED</th>
+                  <th scope="col">RECOVERED</th>
+                  <th scope="col">DECEASED</th>
+                </tr>
+               </thead>
+                <tbody>
+                {% for data in context %}
+                <tr>
+                  <th scope="row">{{data.state}}</th>
+                  <td>{{data.confirmed}}
+                    <span class="deltaconfirmed badge badge-light">
+                        <span class="text-primary text-bold">
+                            +{{data.latest_confirm}}
+                        </span>
+                    </span>
+                  </td>
+                  <td>{{data.recovered}}
+                    <span class="deltarecovered badge badge-light">
+                        <span class="text-success text-bold">
+                            +{{data.latest_recovered}}
+                        </span>
+                    </span>
+                  </td>
+                  <td>{{data.deaths}}
+                    <span class="deltaconfirmed badge badge-light">
+                        <span class="text-danger text-bold">
+                            +{{data.latest_deaths}}
+                        </span>
+                    </span>
+                  </td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+{% endblock %}

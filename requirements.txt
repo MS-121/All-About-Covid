@@ -1,0 +1,12 @@
+beautifulsoup4==4.9.3
+bs4==0.0.1
+certifi==2018.10.15
+chardet==3.0.4
+Django==2.1
+django-crispy-forms==1.7.2
+idna==2.7
+Pillow==8.1.0
+pytz==2018.5
+requests==2.25.1
+soupsieve==2.1
+urllib3==1.26.2
