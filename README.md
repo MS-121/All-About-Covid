@@ -65,4 +65,4 @@ User can manage their profiles , Update or Delete their Posts , see news and cov
 
 ---
 ## Licence 
-Licenced Underm [MIT LICENCE](Licence)
+Licenced Underm [MIT LICENCE](LICENCE)
