@@ -1,2 +1,2 @@
 # All-About-Covid
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Image of AAC](https://static.thenounproject.com/png/1548319-200.png)
